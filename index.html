@@ -1,14 +1,90 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  </head>
-  <body>
-
-    <div id="app">
-      {{ message }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/stats.css">
+  <link rel="stylesheet" href="./css/poketype.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://kit.fontawesome.com/93c39929eb.js" crossorigin="anonymous"></script>
+  <script src="index.js" defer></script>
+  <title>Vue Project</title>
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- Search Bar Section-->
+    <div class="pokeSearch">
+      <input type="text" placeholder=" Pokemon Name or ID" id="userInput" v-on:keyup.enter="userInput" class="search-bar">
+      <button type="button"  v-on:click="userInput" class="search-btn">
+        <i class="far fa-arrow-alt-circle-down"></i>
+      </button>
     </div>
+    <!-- Pokemon Name / ID / Types -->
+    <div class="container" id="container" style="display: none;">
+      <div class="name_id_type_container">
+        <div class="pokeInfo">
+          <h1 class="pokeName">{{ pokemon_name }}</h1>
+          <h3># {{ pokemon_id }}</h3>
+        </div>
+        <div class="typeBar">
+          <h3 class="type" :class="type_1">{{ type_1 }}</h3>
+          <h3 class="type typeHide" :class="type_2">{{ type_2 }}</h3>
+        </div>
+      </div>
+      <div class="img_stats_container">
+        <div class="imgDiv">
+          <img class="image" v-bind:src="image" :alt="pokemon_name">
+        </div>
+        <div class="pokeData">
+          <div class="inlineDiv">
+            <h3 class="statText">Hit Points</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="hp"></div>
+            </div>
+          </div>
+          <div class="inlineDiv">
+            <h3 class="statText">Attack</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="atk" style="width: 100%"></div>
+            </div>
+          </div>
+          <div class="inlineDiv">
+            <h3 class="statText">Defense</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="def"></div>
+            </div>
+          </div>
+          <div class="inlineDiv">
+            <h3 class="statText">Speed</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="spd"></div>
+            </div>
+          </div>
+          <div class="inlineDiv">
+            <h3 class="statText">Special Attack</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="satk"></div>
+            </div>
+          </div>
+          <div class="inlineDiv">
+            <h3 class="statText">Special Defense</h3>
+            <div class="statbar" data-total="1000" data-value="1000">
+              <div class="sdef"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <script src="index.js"></script>
-  </body>
+      <div class="pokeBio">
+        <div class="pokeHW">
+          <h3 class="height">Height: {{ height }}</h3>
+          <h3 class="weight">Weight: {{ weight }}</h3>
+        </div>
+      </div>
+
+    </div>
+  <!-- </div> -->
+</body>
 </html>
