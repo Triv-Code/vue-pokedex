@@ -64,16 +64,17 @@ const app = new Vue({
           this.type_1 = data.types[0].type.name
           if (data.types[1]) {
             this.type_2 = data.types[1].type.name
+            document.querySelector('.typeHide').style = "display: block;"
           } else { 
             this.type_2 = ''
             document.querySelector('.typeHide').style = "display: none;"
           }
-          this.hit_points = data.stats[0].base_stat
-          this.attack = data.stats[1].base_stat
-          this.defense = data.stats[2].base_stat
-          this.speed = data.stats[3].base_stat
-          this.special_attack = data.stats[4].base_stat
-          this.special_defense= data.stats[5].base_stat
+          this.hit_points =  `width: ${this.percentage(data.stats[0].base_stat)}%`
+          this.attack = `width: ${this.percentage(data.stats[1].base_stat)}%`
+          this.defense = `width: ${this.percentage(data.stats[2].base_stat)}%`
+          this.speed = `width: ${this.percentage(data.stats[3].base_stat)}%`
+          this.special_attack = `width: ${this.percentage(data.stats[4].base_stat)}%`
+          this.special_defense= `width: ${this.percentage(data.stats[5].base_stat)}%`
           document.getElementById('container').style = 'grid';
           setTimeout( function() {
             document.querySelector('.hp').style.width = `${this.hit_points}%"`;
@@ -81,6 +82,6 @@ const app = new Vue({
           }, 500)
         })
        .catch(() => alert(`That's not a Pokemon!`))
-    }
+    },
   },
 });
