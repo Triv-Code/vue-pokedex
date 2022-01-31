@@ -78,7 +78,6 @@ const app = new Vue({
           document.getElementById('container').style = 'grid';
           setTimeout( function() {
             document.querySelector('.hp').style.width = `${this.hit_points}%"`;
-            console.log("whut the fuck" + this.hit_points)
           }, 500)
         })
        .catch(() => alert(`That's not a Pokemon!`))

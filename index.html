@@ -10,18 +10,18 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="https://kit.fontawesome.com/93c39929eb.js" crossorigin="anonymous"></script>
   <script src="index.js" defer></script>
-  <title>Vue Project</title>
+  <title>Vue Pokedex</title>
 </head>
 <body>
   <div class="app" id="app">
-    <!-- Search Bar Section-->
+<!-- Search Bar Section-->
     <div class="pokeSearch">
       <input type="text" placeholder=" Pokemon Name or ID" id="userInput" v-on:keyup.enter="userInput" class="search-bar">
       <button type="button"  v-on:click="userInput" class="search-btn">
         <i class="far fa-arrow-alt-circle-down"></i>
       </button>
     </div>
-    <!-- Pokemon Name / ID / Types -->
+<!-- Pokemon Name / ID / Types -->
     <div class="container" id="container" style="display: none;">
       <div class="name_id_type_container">
         <div class="pokeInfo">
@@ -33,6 +33,7 @@
           <h3 class="type typeHide" :class="type_2">{{ type_2 }}</h3>
         </div>
       </div>
+<!-- Pokemon Stats -->
       <div class="img_stats_container">
         <div class="imgDiv">
           <img class="image" v-bind:src="image" :alt="pokemon_name">
@@ -76,14 +77,13 @@
           </div>
         </div>
       </div>
-
+<!-- Pokemon Height / Weight -->
       <div class="pokeBio">
         <div class="pokeHW">
           <h3 class="height">Height: {{ height }}</h3>
           <h3 class="weight">Weight: {{ weight }}</h3>
         </div>
       </div>
-
     </div>
   </div>
 </body>
