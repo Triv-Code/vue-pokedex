@@ -16,7 +16,7 @@ const app = new Vue({
     weight: '',
   },
   methods: {
-    upperCase(string) {
+    firstUpperCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
     heightAdjust(num) {       
@@ -35,7 +35,7 @@ const app = new Vue({
     },
     percentage(num) {
       return Math.floor((num / 160) * 100)
-    },
+    g},
     userInput() {
       this.getPokemon((document.getElementById('userInput').value).toLowerCase());
       document.getElementById('userInput').value = null;
@@ -44,7 +44,7 @@ const app = new Vue({
       fetch(`https://pokeapi.co/api/v2/pokemon/${input}/`)
         .then(res => res.json())
         .then(data => {
-          this.pokemon_name = this.upperCase(data.name)
+          this.pokemon_name = this.firstUpperCase(data.name)
           this.pokemon_id = data.id
           this.image = data.sprites.other.dream_world.front_default
           this.height =  this.heightAdjust(data.height)
