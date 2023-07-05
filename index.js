@@ -33,7 +33,9 @@ const app = new Vue({
       num = Number.parseFloat((num * 0.1) * 2.205).toPrecision(3);
       return `${num} lbs`
     },
-    percentage(num) { return Math.floor((num / 160) * 100) },
+    percentage(num) {
+      return Math.floor((num / 160) * 100)
+    },
     userInput() {
       this.getPokemon((document.getElementById('userInput').value).toLowerCase());
       document.getElementById('userInput').value = null;
