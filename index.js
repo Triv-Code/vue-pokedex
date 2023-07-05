@@ -1,7 +1,6 @@
 const app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello World',
     pokemon_name: '',
     pokemon_id: '',
     image: '',
@@ -20,36 +19,23 @@ const app = new Vue({
     upperCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
-    heightAdjust(num) {        
-      num = num * 0.10;
-      num = num * 39.37;
-      num = num / 12;
-      foot = num.toString();
+    heightAdjust(num) {       
+      num = num * 0.10 * 39.37 / 12;
       foot = Math.floor(num);
-      inch = num - foot;
-      inch = 12 * inch;
-      inch = Math.ceil(inch);
+      inch = Math.ceil((num - foot) * 12);
       if (inch === 12) {
           inch = 0
-          foot = foot + 1
+          foot += 1;
       }  
       return `${foot}'${inch}" `
     },
     weightAdjust(num) {
-      num = num * 0.1;
-      num = num * 2.205;
-      num = Number.parseFloat(num).toPrecision(3);
+      num = Number.parseFloat((num * 0.1) * 2.205).toPrecision(3);
       return `${num} lbs`
     },
-    percentage(num) {
-      num = num / 160;
-      num = num * 100
-      num = Math.floor(num);
-      return num
-    },
+    percentage(num) { return Math.floor((num / 160) * 100) },
     userInput() {
-      pokeInput = document.getElementById('userInput').value
-      this.getPokemon(pokeInput.toLowerCase());
+      this.getPokemon((document.getElementById('userInput').value).toLowerCase());
       document.getElementById('userInput').value = null;
     },
     getPokemon(input) {
